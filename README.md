@@ -1,4 +1,4 @@
-# GameOff24-SECRETS
+# Microscopia
 Personal unity game project repository for github's game jam - Game Off 2024.
 
 Submissions open from November 1st 2024 at 9:37 PM to December 1st 2024 at 10:37 PM
