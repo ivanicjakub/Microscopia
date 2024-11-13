@@ -214,6 +214,91 @@ MonoBehaviour:
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
+--- !u!114 &-7047577744206925572
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d6b9a6f33e023468b90de3392e32da, type: 3}
+  m_Name: VFXVolumeMixer
+  m_EditorClassIdentifier: 
+  active: 1
+  CustomFloatParameter1:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter2:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter3:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter4:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter5:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter6:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter7:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomFloatParameter8:
+    m_OverrideState: 1
+    m_Value: 0
+  CustomVector3Parameter1:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter2:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter3:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter4:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter5:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter6:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter7:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomVector3Parameter8:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
+  CustomColorParameter1:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter2:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter3:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter4:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter5:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter6:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter7:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  CustomColorParameter8:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &-6951754464447674219
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -506,6 +591,7 @@ MonoBehaviour:
   - {fileID: -8186968272690591729}
   - {fileID: -3978695733392391637}
   - {fileID: -1083910812058648046}
+  - {fileID: -7047577744206925572}
 --- !u!114 &156332030701414761
 MonoBehaviour:
   m_ObjectHideFlags: 3
