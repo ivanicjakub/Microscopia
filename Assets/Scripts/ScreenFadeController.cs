@@ -2,18 +2,24 @@ namespace Secrets.Gameplay
 {
     using UnityEngine;
     using System.Threading.Tasks;
+    using UnityEngine.UI;
+
     public class ScreenFadeController : MonoBehaviour
     {
         public static ScreenFadeController Instance;
 
-        [SerializeField] private string fadePropertyName = "_FadeValue";
-        private float currentFadeValue;
-        private float targetFadeValue;
-        private float fadeStartTime;
-        private float fadeDuration;
-        private bool isFading;
+        [SerializeField] private Image fadeImage;
 
-        public bool IsFading => isFading;
+        private float _currentFadeValue;
+        private float _targetFadeValue;
+        private float _fadeStartTime;
+        private float _fadeDuration;
+        private bool _isFading;
+
+        public static bool IsFading => Instance ? Instance._isFading : false;
+
+        private Color _black;
+        private Color _blackTransparent;
 
         private void Awake()
         {
@@ -21,8 +27,11 @@ namespace Secrets.Gameplay
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                currentFadeValue = 0f;
-                Shader.SetGlobalFloat(fadePropertyName, currentFadeValue);
+                _currentFadeValue = 0f;
+                _black = Color.black;
+                _blackTransparent = _black;
+                _blackTransparent.a = 0f;
+                UpdateGraphicsFadeValue(_currentFadeValue);
             }
             else
             {
@@ -38,22 +47,40 @@ namespace Secrets.Gameplay
 
         private void Update()
         {
-            if (!isFading) return;
+            if (!_isFading) return;
 
-            float timeSinceStart = Time.time - fadeStartTime;
-            float progress = timeSinceStart / fadeDuration;
+            float timeSinceStart = Time.time - _fadeStartTime;
+            float progress = timeSinceStart / _fadeDuration;
 
             if (progress >= 1f)
             {
-                currentFadeValue = targetFadeValue;
-                isFading = false;
+                _currentFadeValue = _targetFadeValue;
+                _isFading = false;
             }
             else
             {
-                currentFadeValue = Mathf.Lerp(currentFadeValue, targetFadeValue, progress);
+                _currentFadeValue = Mathf.Lerp(_currentFadeValue, _targetFadeValue, progress);
             }
 
-            Shader.SetGlobalFloat(fadePropertyName, currentFadeValue);
+            UpdateGraphicsFadeValue(_currentFadeValue);
+        }
+
+        private void UpdateGraphicsFadeValue(float value)
+        {
+            fadeImage.color = Color.Lerp(_blackTransparent, _black, value);
+            bool imageShouldBeActive = value > 0.01f;
+            if (fadeImage.enabled != imageShouldBeActive)
+                fadeImage.enabled = imageShouldBeActive;
+        }
+
+        public async void BlackScreenFadeIn()
+        {
+             await FadeIn(1f);
+        }
+
+        public async void BlackScreenFadeOut()
+        {
+            await FadeOut(2f);
         }
 
         public async Task FadeIn(float duration)
@@ -68,12 +95,12 @@ namespace Secrets.Gameplay
 
         public async Task Fade(float targetValue, float duration)
         {
-            fadeStartTime = Time.time;
-            fadeDuration = duration;
-            targetFadeValue = targetValue;
-            isFading = true;
+            _fadeStartTime = Time.time;
+            _fadeDuration = duration;
+            _targetFadeValue = targetValue;
+            _isFading = true;
 
-            while (isFading)
+            while (_isFading)
             {
                 await Task.Yield();
             }
@@ -81,10 +108,10 @@ namespace Secrets.Gameplay
 
         public void SetInstantFade(float value)
         {
-            currentFadeValue = value;
-            targetFadeValue = value;
-            isFading = false;
-            Shader.SetGlobalFloat(fadePropertyName, value);
+            _currentFadeValue = value;
+            _targetFadeValue = value;
+            _isFading = false;
+            UpdateGraphicsFadeValue(value);
         }
     }
 }

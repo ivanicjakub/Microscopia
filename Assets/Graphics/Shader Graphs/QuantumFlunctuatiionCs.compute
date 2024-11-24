@@ -1,0 +1,125 @@
+#pragma kernel CSMain
+
+// Structures
+struct Particle {
+    float3 position;
+    float3 velocity;
+    float4 color;
+    float temperature;
+    float energy;
+    float lifetime;
+};
+
+// Buffers and textures
+RWStructuredBuffer<Particle> particles;
+Texture2D<float4> cmbSkybox;
+SamplerState sampler_cmbSkybox;
+
+// Constants buffer to avoid UAV issues
+cbuffer SimulationParams : register(b0)
+{
+    float deltaTime;
+    float time;
+    float maxLifetime;
+    int numParticles;
+    float3 boundsCentre;
+    float boundsSize;
+    float4 coldColor;
+    float4 hotColor;
+    float temperatureScale;
+    float energyScale;
+    float quantumFluctuationScale;
+    float padding; // For 16-byte alignment
+}
+
+// Move constants outside the UAV-accessed code
+static const float PLANCK_TEMPERATURE = 1.417e32;
+static const float CMB_BASE_TEMPERATURE = 2.725;
+static const float TEMPERATURE_VARIANCE = 0.0002;
+static const float BOLTZMANN_CONSTANT = 1.380649e-23;
+static const float PLANCK_CONSTANT = 6.62607015e-34;
+
+float3 hash33(float3 p)
+{
+    p = float3(
+        dot(p, float3(127.1, 311.7, 74.7)),
+        dot(p, float3(269.5, 183.3, 246.1)),
+        dot(p, float3(113.5, 271.9, 124.6))
+    );
+    return frac(sin(p) * 43758.5453123);
+}
+
+float2 DirectionToSphericalUV(float3 dir)
+{
+    const float2 invAtan = float2(0.1591, 0.3183);
+    float2 uv = float2(atan2(dir.z, dir.x), asin(dir.y));
+    uv *= invAtan;
+    uv += 0.5;
+    return uv;
+}
+
+float4 TemperatureToColor(float temperature, float energy)
+{
+    float normalizedTemp = (temperature - CMB_BASE_TEMPERATURE) / TEMPERATURE_VARIANCE;
+    normalizedTemp = saturate(normalizedTemp);
+    
+    float quantumEffect = energy * energyScale; // Simplified to avoid UAV issues
+    float fluctuation = sin(quantumEffect * 6.28318530718) * 0.1;
+    
+    float4 baseColor = lerp(coldColor, hotColor, normalizedTemp);
+    return saturate(baseColor + float4(fluctuation, fluctuation, fluctuation, 0));
+}
+
+float CalculateQuantumEnergy(float3 position, float temperature)
+{
+    float n = length(position) * quantumFluctuationScale;
+    return n * temperature; // Simplified to avoid UAV issues
+}
+
+[numthreads(256,1,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    uint index = id.x;
+    if (index >= (uint)numParticles) return;
+
+    // Load particle data
+    Particle p = particles[index];
+    
+    // Calculate new lifetime
+    float newLifetime = p.lifetime - deltaTime;
+    
+    // Reset particle if needed
+    if (newLifetime <= 0)
+    {
+        float3 randomOffset = hash33(float3(float(index), time, 0)) * 2 - 1;
+        p.position = boundsCentre + randomOffset * boundsSize;
+        p.velocity = float3(0, 0, 0);
+        p.lifetime = maxLifetime;
+    }
+    else
+    {
+        p.lifetime = newLifetime;
+        
+        // Calculate direction and sample temperature
+        float3 dir = normalize(p.position - boundsCentre);
+        float2 uv = DirectionToSphericalUV(dir);
+        float4 cmbSample = cmbSkybox.SampleLevel(sampler_cmbSkybox, uv, 0);
+        
+        // Update temperature and energy
+        float baseTemp = CMB_BASE_TEMPERATURE + dot(cmbSample.rgb, float3(0.299, 0.587, 0.114));
+        float3 noise = hash33(p.position * temperatureScale + time);
+        p.temperature = baseTemp + noise.x * TEMPERATURE_VARIANCE;
+        p.energy = CalculateQuantumEnergy(p.position, p.temperature);
+        
+        // Update position and velocity
+        float3 quantumNoise = hash33(float3(p.position.xy, time)) * 2 - 1;
+        p.velocity += quantumNoise * p.energy * deltaTime;
+        p.position += p.velocity * deltaTime;
+        
+        // Update color
+        p.color = TemperatureToColor(p.temperature, p.energy);
+    }
+    
+    // Write back
+    particles[index] = p;
+}
