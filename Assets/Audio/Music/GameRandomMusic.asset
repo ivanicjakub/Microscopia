@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-4824344124899938879
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Game1_{-4824344124899938879}
+  m_AudioClip: {fileID: 8300000, guid: aae8e591cb17255478ea3db9a80f280b, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4774249995277324244
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Game2_{-4774249995277324244}
+  m_AudioClip: {fileID: 8300000, guid: 2443653ea40efd44a9b2c755da843982, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1962772540949016479
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (3)_{-1962772540949016479}
+  m_AudioClip: {fileID: 8300000, guid: f1ed61376a487ab4199cf5b18ebad556, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &64437312427606872
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (4)_{64437312427606872}
+  m_AudioClip: {fileID: 8300000, guid: 22553f0a6f7d9374bbf56ecb1fae3a8e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1272860527714035706
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (6)_{1272860527714035706}
+  m_AudioClip: {fileID: 8300000, guid: f0502a485b21be4498ac263d44627e8d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3029187235746050793
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (5)_{3029187235746050793}
+  m_AudioClip: {fileID: 8300000, guid: e5ea7f16e8a1c454cba87f680e52dc38, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3652832481309800805
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music_{3652832481309800805}
+  m_AudioClip: {fileID: 8300000, guid: a45947a39187bf947a28487dbdb796dc, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5493016709672734164
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (1)_{5493016709672734164}
+  m_AudioClip: {fileID: 8300000, guid: a2898a84ba56e72408a2414fa292acb3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GameRandomMusic
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0.01
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: -9.256206, y: 0.0000047683716}
+  m_PitchRandomizationRange: {x: -49.58675, y: 59.50413}
+  m_AutomaticTriggerTimeRandomizationRange: {x: -2.4793375, y: 7.438015}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 3652832481309800805}
+  - {fileID: 5493016709672734164}
+  - {fileID: 9063178338458717271}
+  - {fileID: -1962772540949016479}
+  - {fileID: 64437312427606872}
+  - {fileID: 3029187235746050793}
+  - {fileID: 1272860527714035706}
+  - {fileID: 8689997474904514499}
+  - {fileID: -4824344124899938879}
+  - {fileID: -4774249995277324244}
+  m_AvoidRepeatingLast: 9
+  m_PlaybackMode: 2
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 0
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 1
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &8689997474904514499
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (7)_{8689997474904514499}
+  m_AudioClip: {fileID: 8300000, guid: 9bbc1268cc6bea6429ef3c3fac8c791e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &9063178338458717271
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: space_soothing_music (2)_{9063178338458717271}
+  m_AudioClip: {fileID: 8300000, guid: f51a9e82064de6343a973977084c2c43, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

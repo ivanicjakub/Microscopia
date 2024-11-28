@@ -42,11 +42,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _A_Texture:
-        m_Texture: {fileID: 2800000, guid: c9a3bc0103825e0438662ce519ed9be7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3c58dfcf81622f0499d33a96ef2b82ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _B_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2c3b0271cda3f1541a9e6130612088ee, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -86,7 +86,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask_Texture:
-        m_Texture: {fileID: 2800000, guid: bd1dfa1a5d846744189169708ca1fbbe, type: 3}
+        m_Texture: {fileID: 2800000, guid: e17f2d045b9980a41a0e6a00fa08798a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -141,8 +141,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 1.59
+    - _Intensity: 1.64
     - _Metallic: 0
+    - _NEAR_CAMERA_FADE: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -161,18 +162,19 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 2
     m_Colors:
-    - _A_Animation: {r: -1.8, g: 0, b: 0, a: 0}
-    - _A_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _A_Animation: {r: 0.02, g: 0, b: 0, a: 0}
+    - _A_Color: {r: 0.660411, g: 0.7407774, b: 1.4142135, a: 1}
     - _A_Tiling_Offset: {r: 1, g: 1, b: 0, a: 0}
-    - _B_Animation: {r: 0, g: 0, b: 0, a: 0}
-    - _B_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-    - _B_Tiling_Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _B_Animation: {r: -0.5, g: 0, b: 0, a: 0}
+    - _B_Color: {r: 2.9463508, g: 2.9463508, b: 2.9463508, a: 1}
+    - _B_Tiling_Offset: {r: 3.19, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _C_Animation: {r: 0, g: 0, b: 0, a: 0}
-    - _C_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    - _C_Color: {r: 1, g: 1, b: 1, a: 1}
     - _C_Tiling_Offset: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Near_Camera_Fade_Min_X_Max_Y_Distance: {r: 5, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

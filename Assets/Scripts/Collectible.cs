@@ -13,13 +13,8 @@ namespace Secrets.Gameplay
         [SerializeField] private bool useTriggerCollision = true;
         [SerializeField] private float destroyDelay = 0f;
 
-        [Header("Visual Feedback")]
-        [SerializeField] private ParticleSystem collectEffect;
-        [SerializeField] private AudioSource collectSound;
-
         [Header("Events")]
         public UnityEvent<Collectible> onCollect;
-        public UnityEvent<Collectible> onCollectStarted;
         public UnityEvent<Collectible> onCollectFinished;
 
         private bool isCollected = false;
@@ -68,18 +63,6 @@ namespace Secrets.Gameplay
         {
             if (isCollected) return;
             isCollected = true;
-
-            onCollectStarted?.Invoke(this);
-
-            if (collectEffect != null)
-            {
-                collectEffect.Play();
-            }
-
-            if (collectSound != null)
-            {
-                collectSound.Play();
-            }
 
             onCollect?.Invoke(this);
 
